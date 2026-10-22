@@ -1,2 +1,30 @@
-on:
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
 jobs:
+    lint:
+      runs-on: self-hosted
+      steps:
+        - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
+    build:
+      needs: lint
+      runs-on: self-hosted
+      steps:
+        - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
+    test:
+        needs: build
+        runs-on: self-hosted
+        steps:
+          - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
+    publish:
+      needs: lint
+      runs-on: self-hosted
+      steps:
+        - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
+
+
+
